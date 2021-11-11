@@ -1,21 +1,29 @@
+from datetime import date
+
 from fetchers.rss_fetcher import RssFetcher
+from mining.fetchers.browser_utils import Browser
+from mining.fetchers.date_browser_fetchers import VedomostiArchiveFetcher, KommersantArchiveFetcher
 from model import Source
 
 output_folder = "output"
+
+browser = Browser()
 
 sources = [
     Source(
         name="Ведомости",
         fetchers=[
             RssFetcher("https://www.vedomosti.ru/rss/news"),
-            RssFetcher("https://www.vedomosti.ru/rss/articles")
+            RssFetcher("https://www.vedomosti.ru/rss/articles"),
+            VedomostiArchiveFetcher(from_date=date(2021, 11, 1), until_date=date(2021, 11, 3), browser=browser),
         ]
     ),
     Source(
         name="Коммерсантъ",
         fetchers=[
             RssFetcher("https://www.kommersant.ru/RSS/corp.xml"),
-            RssFetcher("https://www.kommersant.ru/RSS/news.xml")
+            RssFetcher("https://www.kommersant.ru/RSS/news.xml"),
+            KommersantArchiveFetcher(from_date=date(2021, 11, 1), until_date=date(2021, 11, 3), browser=browser)
         ]
     ),
     Source(
