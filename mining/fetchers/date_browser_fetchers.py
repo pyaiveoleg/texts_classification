@@ -41,3 +41,43 @@ class KommersantArchiveFetcher(SimpleDateBasedFetcher):
 
     def get_url(self, year: str, month: str, day: str) -> str:
         return f"https://www.kommersant.ru/archive/list/77/day/{year}-{month}-{day}?cal_open=1"
+
+
+class RgFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_date: date, until_date: date, browser: Browser):
+        super().__init__(from_date, until_date, ".b-link.b-link_title", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://rg.ru/search/?from={day}.{month}.{year}&to={day}.{month}.{year}"
+
+
+class LentaRuFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_date: date, until_date: date, browser: Browser):
+        super().__init__(from_date, until_date, "h3.card-title", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://lenta.ru/{year}/{month}/{day}/"
+
+
+class RiaFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_date: date, until_date: date, browser: Browser):
+        super().__init__(from_date, until_date, "a.list-item__title", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://ria.ru/{year}{month}{day}/"
+
+
+class RbkFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_date: date, until_date: date, browser: Browser):
+        super().__init__(from_date, until_date, ".search-item__title", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://www.rbc.ru/search/?query=%D0%A0%D0%91%D0%9A&dateFrom={day}.{month}.{year}&dateTo={day}.{month}.{year}"
+
+
+class GolosAmerikiFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_date: date, until_date: date, browser: Browser):
+        super().__init__(from_date, until_date, ".media-block__title", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://www.golosameriki.com/novosti/{year}/{month}/{day}"

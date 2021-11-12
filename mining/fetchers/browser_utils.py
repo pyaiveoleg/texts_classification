@@ -15,6 +15,7 @@ class Browser:
     def __init__(self):
         print("[Browser] init")
         self.driver = create_driver()
+        self.driver.set_page_load_timeout(10)
 
     def get_text_elements(self, url: str, css_selector: str) -> List[str]:
         print(f"[Browser] Getting {css_selector} from {url}")

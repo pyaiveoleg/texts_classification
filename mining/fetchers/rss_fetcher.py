@@ -16,4 +16,6 @@ class RssFetcher(Fetcher):
         self.url = url
 
     def fetch_titles(self) -> List[str]:
-        return get_titles_from_rss(self.url)
+        titles = get_titles_from_rss(self.url)
+        print(f"[RSS] Got {len(titles)} titles")
+        return titles

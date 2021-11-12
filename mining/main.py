@@ -7,6 +7,7 @@ def main():
     dataset = gather_dataset(sources)
     print(f"Dumping dataset to '{output_folder}'")
     dump_dataset(dataset, output_folder)
+    print(f"Finished. Total: {sum(len(a.titles) for a in dataset)} records.")
     browser.close()
 
 
