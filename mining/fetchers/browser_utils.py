@@ -7,7 +7,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 def create_driver() -> WebDriver:
     options = Options()
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     return webdriver.Firefox(options=options)
 
 

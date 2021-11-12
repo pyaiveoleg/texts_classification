@@ -11,7 +11,7 @@ class Source:
     name: str
     fetchers: List[Fetcher]
 
-    def fetch_articles(self) -> 'FetchedArticles':
+    def fetch_titles(self) -> List[str]:
         titles = set()
         for fetcher in self.fetchers:
             try:
@@ -22,13 +22,4 @@ class Source:
             for title in fetched_titles:
                 titles.add(title)
         print(f"Fetched {len(titles)} articles from '{self.name}'")
-        return FetchedArticles(source_name=self.name, titles=list(titles))
-
-
-@dataclass
-class FetchedArticles:
-    source_name: str
-    titles: List[str]
-
-
-Dataset = List[FetchedArticles]
+        return list(titles)
