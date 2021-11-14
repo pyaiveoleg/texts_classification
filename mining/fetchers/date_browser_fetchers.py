@@ -21,9 +21,12 @@ class SimpleDateBasedFetcher(Fetcher):
     def fetch_titles(self) -> List[str]:
         titles = set()
         for cur_date in daterange(self.from_date, self.until_date):
-            url = self.get_url(str(cur_date.year), format_day_month(cur_date.month), format_day_month(cur_date.day))
-            for title in self.browser.get_text_elements(url, self.css_selector):
-                titles.add(title)
+            try:
+                url = self.get_url(str(cur_date.year), format_day_month(cur_date.month), format_day_month(cur_date.day))
+                for title in self.browser.get_text_elements(url, self.css_selector):
+                    titles.add(title)
+            except Exception as e:
+                print(f"Exception while fetching titles for {cur_date}: {e}")
         return list(titles)
 
 

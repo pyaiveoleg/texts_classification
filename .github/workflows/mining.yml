@@ -1,0 +1,26 @@
+name: Mining
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - uses: browser-actions/setup-geckodriver@latest
+
+  mine:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd mining && python main.py
+      - uses: actions/upload-artifact@v2
+        name: Upload dataset
+        if: always()
+        with:
+          name: dataset
+          path: mining/output
