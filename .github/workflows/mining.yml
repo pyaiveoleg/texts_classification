@@ -11,6 +11,9 @@ jobs:
         with:
           python-version: '3.x'
       - uses: browser-actions/setup-geckodriver@latest
+      - uses: actions/checkout@v2
+      - run: pip install -r mining/requirements.txt
+
 
   mine:
     needs: [setup]
