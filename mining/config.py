@@ -1,8 +1,8 @@
 from datetime import date
 
 from fetchers.rss_fetcher import RssFetcher
-from mining.fetchers.browser_utils import Browser
-from mining.fetchers.date_browser_fetchers import VedomostiArchiveFetcher, KommersantArchiveFetcher, RgFetcher, \
+from fetchers.browser_utils import Browser
+from fetchers.date_browser_fetchers import VedomostiArchiveFetcher, KommersantArchiveFetcher, RgFetcher, \
     LentaRuFetcher, RiaFetcher, RbkFetcher, GolosAmerikiFetcher
 from model import Source
 

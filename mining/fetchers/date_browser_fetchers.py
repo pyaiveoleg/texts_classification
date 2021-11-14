@@ -2,9 +2,9 @@ from abc import abstractmethod
 from datetime import date
 from typing import List
 
-from mining.fetchers.browser_utils import Browser
-from mining.model import Fetcher
-from mining.util import daterange, format_day_month
+from fetchers.browser_utils import Browser
+from model import Fetcher
+from util import daterange, format_day_month
 
 
 class SimpleDateBasedFetcher(Fetcher):
