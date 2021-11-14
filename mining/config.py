@@ -10,7 +10,7 @@ output_folder = "output"
 
 browser = Browser()
 
-from_date = date(2015, 11, 1)
+from_date = date(2010, 11, 1)
 until_date = date(2021, 11, 3)
 
 sources = [
