@@ -82,5 +82,4 @@ sources = [
             E1SexFetcher(from_date, until_date, browser)
         ]
     )
-
 ]

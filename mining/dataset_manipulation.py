@@ -24,4 +24,3 @@ def gather_dataset(sources: List[Source], output_folder: str):
                 continue
             for title in source.fetch_titles():
                 articles_file.write(f"__label_{source_id} {sanitize(title)}\n")
-
