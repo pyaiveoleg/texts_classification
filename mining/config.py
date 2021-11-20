@@ -3,7 +3,7 @@ from datetime import date
 from fetchers.rss_fetcher import RssFetcher
 from fetchers.browser_utils import Browser
 from fetchers.date_browser_fetchers import VedomostiArchiveFetcher, KommersantArchiveFetcher, RgFetcher, \
-    LentaRuFetcher, RiaFetcher, RbkFetcher, GolosAmerikiFetcher
+    LentaRuFetcher, RiaFetcher, RbkFetcher, GolosAmerikiFetcher, PopcornNewsFetcher, E1SexFetcher
 from model import Source
 
 output_folder = "output"
@@ -68,6 +68,18 @@ sources = [
             RssFetcher("https://rssexport.rbc.ru/rbcnews/news/30/full.rss"),
             RssFetcher("http://static.feed.rbc.ru/rbc/logical/footer/news.rss"),
             RbkFetcher(from_date, until_date, browser)
+        ]
+    ),
+    Source(
+        name="PopcornNews",
+        fetchers=[
+            PopcornNewsFetcher(from_date, until_date, browser)
+        ]
+    ),
+    Source(
+        name="E1",
+        fetchers=[
+            E1SexFetcher(from_date, until_date, browser)
         ]
     )
 

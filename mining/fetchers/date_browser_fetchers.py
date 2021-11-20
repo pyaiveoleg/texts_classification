@@ -84,3 +84,19 @@ class GolosAmerikiFetcher(SimpleDateBasedFetcher):
 
     def get_url(self, year: str, month: str, day: str) -> str:
         return f"https://www.golosameriki.com/novosti/{year}/{month}/{day}"
+
+
+class PopcornNewsFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_date: date, until_date: date, browser: Browser):
+        super().__init__(from_date, until_date, ".articles-archive_articles-title", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://www.popcornnews.ru/archive/{year}/{month}/{day}"
+
+
+class E1SexFetcher(SimpleDateBasedFetcher):
+    def __init__(self, from_data: date, until_date: date, browser: Browser):
+        super().__init__(from_data, until_date, "h2.GZjx", browser)
+
+    def get_url(self, year: str, month: str, day: str) -> str:
+        return f"https://www.e1.ru/text/tags/%D1%81%D0%B5%D0%BA%D1%81/?dateFrom={day}.{month}.{year}&dateTo={day}.{month}.{year}"

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Protocol, List
+from typing import Protocol, List, Optional
 
 
 class Fetcher(Protocol):
@@ -10,6 +10,7 @@ class Fetcher(Protocol):
 class Source:
     name: str
     fetchers: List[Fetcher]
+    skip: bool = False
 
     def fetch_titles(self) -> List[str]:
         titles = set()

@@ -19,6 +19,9 @@ def gather_dataset(sources: List[Source], output_folder: str):
     # dump articles.txt for each source
     with open(folder / 'articles.txt', "w") as articles_file:
         for source_id, source in enumerate(sources):
+            if source.skip:
+                print(f"Skipping source {source.name}")
+                continue
             for title in source.fetch_titles():
                 articles_file.write(f"__label_{source_id} {sanitize(title)}\n")
 
